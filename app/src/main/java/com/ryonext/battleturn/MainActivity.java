@@ -15,8 +15,6 @@ public class MainActivity extends ActionBarActivity {
 
     int i = 0;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +22,11 @@ public class MainActivity extends ActionBarActivity {
 
 
         Button button = (Button) findViewById(R.id.button);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 i++;
-
                 TextView text = (TextView)findViewById(R.id.label);
                 text.setText(String.valueOf(i));
             }
