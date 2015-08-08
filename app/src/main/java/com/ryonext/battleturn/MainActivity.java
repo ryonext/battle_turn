@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    int i = 1;
+    int turn = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,9 @@ public class MainActivity extends ActionBarActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i++;
+                turn++;
                 TextView text = (TextView)findViewById(R.id.label);
-                text.setText(String.valueOf(i));
+                text.setText(String.valueOf(turn));
             }
         });
     }
