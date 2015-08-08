@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    int i = 0;
+    int i = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
