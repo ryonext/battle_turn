@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
                 text.setText(String.valueOf(turn));
             }
         });
+
+
     }
 
 
@@ -49,8 +52,15 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+            case R.id.reset:
+                turn = 1;
+                TextView text = (TextView)findViewById(R.id.label);
+                text.setText(String.valueOf(turn));
+
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
