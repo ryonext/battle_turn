@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,6 +30,24 @@ public class MainActivity extends ActionBarActivity {
                 turn++;
                 TextView text = (TextView)findViewById(R.id.label);
                 text.setText(String.valueOf(turn));
+            }
+        });
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu){
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        };
+        MenuItem reset = R.menu.menu_main.findItem(R.id.reset);
+
+        reset.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                turn = 0;
+                TextView text = (TextView) findViewById(R.id.label);
+                text.setText(String.valueOf(turn));
+
+                return true;
             }
         });
     }
