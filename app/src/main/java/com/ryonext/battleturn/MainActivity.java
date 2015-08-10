@@ -1,6 +1,7 @@
 package com.ryonext.battleturn;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,12 @@ public class MainActivity extends ActionBarActivity {
                 turn++;
                 TextView text = (TextView)findViewById(R.id.label);
                 text.setText(String.valueOf(turn));
+
+                if(turn % 5 == 0) {
+                    text.setTextColor(Color.RED);
+                } else {
+                    text.setTextColor(Color.BLACK);
+                }
             }
         });
 
