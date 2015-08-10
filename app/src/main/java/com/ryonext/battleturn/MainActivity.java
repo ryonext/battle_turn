@@ -86,7 +86,12 @@ public class MainActivity extends ActionBarActivity {
                 .setView(editView)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        warn_per = Integer.parseInt(editView.getText().toString());
+                        try {
+                          String val = editView.getText().toString();
+                          warn_per = Integer.parseInt(val);
+                        } catch (Exception e){
+                            
+                        }
                     }
                 }).show();
     }
