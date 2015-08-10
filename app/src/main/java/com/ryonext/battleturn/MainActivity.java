@@ -1,5 +1,6 @@
 package com.ryonext.battleturn;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -10,12 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ActionMenuView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
 
     int turn = 1;
+    int warn_per = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
                 TextView text = (TextView)findViewById(R.id.label);
                 text.setText(String.valueOf(turn));
 
-                if(turn % 5 == 0) {
+                if(warn_per > 0 && turn % warn_per == 0) {
                     text.setTextColor(Color.RED);
                 } else {
                     text.setTextColor(Color.BLACK);
@@ -61,6 +65,7 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
+                createInputDialog();
                 return true;
             case R.id.reset:
                 turn = 1;
@@ -71,5 +76,18 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void createInputDialog(){
+        final EditText editView = new EditText(MainActivity.this);
+        new AlertDialog.Builder(MainActivity.this)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setTitle("危険ターン")
+                .setView(editView)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        warn_per = Integer.parseInt(editView.getText().toString());
+                    }
+                }).show();
     }
 }
