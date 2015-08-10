@@ -80,6 +80,8 @@ public class MainActivity extends ActionBarActivity {
 
     private void createInputDialog(){
         final EditText editView = new EditText(MainActivity.this);
+        editView.setText(String.valueOf(warn_per));
+        
         new AlertDialog.Builder(MainActivity.this)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle("危険ターン")
@@ -90,7 +92,7 @@ public class MainActivity extends ActionBarActivity {
                           String val = editView.getText().toString();
                           warn_per = Integer.parseInt(val);
                         } catch (Exception e){
-                            
+
                         }
                     }
                 }).show();
